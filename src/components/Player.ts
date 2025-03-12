@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { endsUpInValidPosition } from "../utilities/endsUpInValidPosition";
+import { metadata as rows, addRows } from "./Map";
 import type { MoveDirection } from "../types";
 
 export const player = Player();
@@ -70,4 +71,7 @@ export function stepCompleted() {
   if (direction === "backward") position.currentRow -= 1;
   if (direction === "left") position.currentTile -= 1;
   if (direction === "right") position.currentTile += 1;
+
+  //add new rows if the player is running out of them
+  if (position.currentRow > rows.length - 10) addRows();
 }

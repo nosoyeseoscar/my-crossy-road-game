@@ -28,15 +28,18 @@ const ambientLight = new THREE.AmbientLight();
 scene.add(ambientLight);
 
 const dirLight = DirectionalLight();
-scene.add(dirLight);
+dirLight.target = player;
+/* scene.add(dirLight); */
+player.add(dirLight);
 
 /* const dirLight = new THREE.DirectionalLight();
 dirLight.position.set(-100, -100, 200);
 scene.add(dirLight); */
 
 const camera = Camera();
-scene.add(camera);
-
+player.add(camera);
+/* scene.add(camera);
+ */
 initializeGame();
 
 const renderer = Renderer();

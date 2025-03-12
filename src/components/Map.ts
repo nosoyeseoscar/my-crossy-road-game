@@ -1,12 +1,13 @@
 import type { Row } from "../types";
 import * as THREE from "three";
+import { generateRows } from "../utilities/generateRows";
 import { Grass } from "./Grass"
 import { Road } from "./Road";
 import { Tree } from "./Tree";
 import { Car } from "./Car";
 import { Truck } from "./Truck";
 
-export const metadata: Row[] = [
+/* export const metadata: Row[] = [
     {
       type: "car",
       direction: false,
@@ -43,11 +44,16 @@ export const metadata: Row[] = [
       ],
     },
     
-  ];
+  ]; */
+
+export const metadata: Row[] = [];
 
 export const map = new THREE.Group();
 
 export function addRows() {
+    const newMetadata = generateRows(20);
+    metadata.push(...newMetadata);
+    
     metadata.forEach((rowData, index) => {
       const rowIndex = index + 1;
   

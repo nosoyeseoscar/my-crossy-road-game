@@ -8,6 +8,7 @@ import { animateVehicles } from "./animateVehicles";
 import { animatePlayer } from "./animatePlayer";
 import "./style.css";
 import "./collectUserInputs";
+import { hitTest } from "./hitTest";
 
 function initializeGame() {
     initializeMap();
@@ -16,6 +17,7 @@ function initializeGame() {
 function animate() {
     animateVehicles();
     animatePlayer();
+    hitTest();
     
     renderer.render(scene, camera);
 }

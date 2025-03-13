@@ -101,8 +101,11 @@ export function addRows() {
     });
   }
 
-
 export function initializeMap() {
+  //Remove All rows
+  metadata.length = 0;
+  map.remove(...map.children);
+  
     for ( let rowIndex = 0; rowIndex > -5; rowIndex--) {
         const grass = Grass(rowIndex);
         map.add(grass);

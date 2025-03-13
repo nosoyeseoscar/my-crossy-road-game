@@ -64,6 +64,20 @@ export function queueMove(direction: MoveDirection) {
   movesQueue.push(direction);
 }
 
+export function initializePlayer() {
+  // Initialize the Three.js player object
+  player.position.x = 0;
+  player.position.y = 0;
+  player.children[0].position.z = 0;
+
+  // Initialize metadata
+  position.currentRow = 0;
+  position.currentTile = 0;
+
+  // Clear the moves queue
+  movesQueue.length = 0;
+}
+
 export function stepCompleted() {
   const direction = movesQueue.shift();
 

@@ -2,7 +2,7 @@ import * as THREE from "three";
 import { Renderer } from "./components/Renderer";
 import { Camera } from "./components/Camera";
 import { DirectionalLight } from "./components/DirectionalLight";
-import { player } from "./components/Player";
+import { player, initializePlayer } from "./components/Player";
 import { map,initializeMap } from "./components/Map";
 import { animateVehicles } from "./animateVehicles";
 import { animatePlayer } from "./animatePlayer";
@@ -10,8 +10,20 @@ import "./style.css";
 import "./collectUserInputs";
 import { hitTest } from "./hitTest";
 
+const scoreDOM = document.getElementById("score");
+const resultDOM = document.getElementById("result-container");
+
+document
+  .querySelector("#retry")
+  ?.addEventListener("click", initializeGame);
+
 function initializeGame() {
+    initializePlayer();
     initializeMap();
+
+    //Initialize UI
+    if (scoreDOM) scoreDOM.innerText = "0";
+    if (resultDOM) resultDOM.style.visibility = "hidden";
 }
 
 function animate() {
